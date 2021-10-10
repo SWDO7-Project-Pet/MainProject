@@ -83,8 +83,9 @@
 					aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">정보</h6>
-						<a class="collapse-item" href="#">팁</a> <a class="collapse-item"
-							href="#">동물백과</a> <a class="collapse-item" href="#">우리동네 동물병원</a>
+						<a class="collapse-item" href="/tip/tipMain">팁</a>
+	                    <a class="collapse-item" href="/tip/tipAnimal">동물백과</a>
+	                    <a class="collapse-item" href="/tip/tipMap">우리동네 동물병원</a>
 					</div>
 				</div></li>
 

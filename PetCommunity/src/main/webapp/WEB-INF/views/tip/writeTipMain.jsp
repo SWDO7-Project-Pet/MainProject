@@ -10,7 +10,7 @@
 	    <meta name="description" content="">
 	    <meta name="author" content="">
 	
-	    <title>자유 게시판</title>
+	    <title>팁</title>
 	
 	    <!-- Custom fonts for this template -->
 	    <link href="../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@
           <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 	
 	            <!-- Sidebar - Brand (타이틀 로고)-->
-	            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+	            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
 	                <div class="sidebar-brand-icon rotate-n-15">
 	                    <i class="fas fa-laugh-wink"></i>
 	                </div>
@@ -82,9 +82,9 @@
 	                    data-parent="#accordionSidebar">
 	                    <div class="bg-white py-2 collapse-inner rounded">
 	                        <h6 class="collapse-header">정보</h6>
-	                        <a class="collapse-item" href="#">팁</a>
-	                        <a class="collapse-item" href="#">동물백과</a>
-	                        <a class="collapse-item" href="#">우리동네 동물병원</a>
+	                        <a class="collapse-item" href="/tip/tipMain">팁</a>
+	                        <a class="collapse-item" href="/tip/tipAnimal">동물백과</a>
+	                        <a class="collapse-item" href="/tip/tipMap">우리동네 동물병원</a>
 	                    </div>
 	                </div>
 	            </li>
@@ -350,46 +350,26 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">자유 게시판</h1>
+                    <h1 class="h3 mb-2 text-gray-800">팁 작성</h1>
                    
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"></h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                       
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- 팁 데이터 작성 부분 --> 
+                      <form action="/tip/writeTipMain" method ="post" > <!-- enctype없으면 파일이 전송이안됨 -->                                                                                                                                                                                                                                                                                                                                                                                            	 
+                   		  <div class="form-group">
+						    <label for="exampleInputPassword1">팁 제목</label>
+						    <input type="text" class="form-control" id="tipTitle" name="tipTitle" placeholder="ex)애완상식">
+						  </div>					 
+						  <label for="exampleInputEmail1">팁 내용</label>
+						  <textarea class="form-control" rows="3" id="tipContent" name="tipContent"></textarea>
+						  
+						  <button type="submit" class="btn btn-default">작성</button>
+                    </form>                            	 
+                               
+                    
+                    
+                    
+                  </div>
 
-                </div>
                 <!-- /.container-fluid -->
 
             </div>
