@@ -10,7 +10,7 @@
 	    <meta name="description" content="">
 	    <meta name="author" content="">
 	
-	    <title>자유 게시판</title>
+	    <title>동물백과</title>
 	
 	    <!-- Custom fonts for this template -->
 	    <link href="../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,9 +24,14 @@
 	
 	    <!-- Custom styles for this page -->
 	    <link href="../resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	    
+	    <style type="text/css">
+		 form{display:inline}
+		</style>
 	</head>
 
 	<body id="page-top">
+	
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -35,7 +40,7 @@
           <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 	
 	            <!-- Sidebar - Brand (타이틀 로고)-->
-	            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+	            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
 	                <div class="sidebar-brand-icon rotate-n-15">
 	                    <i class="fas fa-laugh-wink"></i>
 	                </div>
@@ -82,9 +87,9 @@
 	                    data-parent="#accordionSidebar">
 	                    <div class="bg-white py-2 collapse-inner rounded">
 	                        <h6 class="collapse-header">정보</h6>
-	                        <a class="collapse-item" href="#">팁</a>
-	                        <a class="collapse-item" href="#">동물백과</a>
-	                        <a class="collapse-item" href="#">우리동네 동물병원</a>
+	                       <a class="collapse-item" href="/tip/tipMain">팁</a>
+	                        <a class="collapse-item" href="/tip/tipAnimal">동물백과</a>
+	                        <a class="collapse-item" href="/tip/tipMap">우리동네 동물병원</a>
 	                    </div>
 	                </div>
 	            </li>
@@ -350,46 +355,70 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">자유 게시판</h1>
+                    <h1 class="h3 mb-2 text-gray-800">동물백과</h1>
                    
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
+                    <!-- 동물백과 데이터 부분 --> 
+                    
+                    <p><a href="/tip/writeTipAnimal">글 작성하기</a></p>                                                                                                                                                                                                                                                                                                                                                                        	 
+                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary"></h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                            	<span>
+                            		<input type="button" value="강아지" id="dog" onclick="location.href='/tip/tipAnimal?animalKind=강아지';">
+                            	</span>                           	
+                            	<span>
+                            		<input type="button" value="고양이" id="cat" onclick="location.href='/tip/tipAnimal?animalKind=고양이';">
+                            	</span>                           	
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th width="175px">동물사진</th>
+                                            <th>동물 품종/설명</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>동물 사진</th>
+                                            <th>동물 품종/설명</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                       
+                                    	 <c:forEach items="${animalList }" var="List">           
+                                    		 <tr>                         		
+                                    			<td rowspan="2"><img src="/images/${List.animalThumbnailSt }" width="175px" height="150px"></td>
+                                    			<td>
+                                    				<div>
+                                    				<a href="/tip/tipAnimalSpecific?animalNum=${List.animalNum }">${List.animalVariety }</a>                                    				
+                                    				<form action="/tip/deleteAnimal" method="get">
+													<input type="hidden" id="animalNum" name="animalNum" value="${List.animalNum }">
+													<button type="submit" class="btn btn-primary btn-sm">삭제</button>
+													</form>
+													<form action="/tip/updateAnimal" method="get">
+													<input type="hidden" id="animalNum" name="animalNum" value="${List.animalNum }">
+													<button type="submit" class="btn btn-primary btn-sm">수정</button>
+													</form>
+													</div>
+                                    			</td>                                    			                               
+                                    		</tr>
+                                    		<tr>
+                                    			<td>${List.animalOutline }</td>
+                                    		</tr>
+                                    	</c:forEach> 
+                                       <tr></tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div>           
+                    
+                    
+                    
+                  </div>
 
-                </div>
                 <!-- /.container-fluid -->
 
             </div>
@@ -452,7 +481,10 @@
 
     <!-- Page level custom scripts -->
     <script src="../resources/js/demo/datatables-demo.js"></script>
-
+	
+	
+	
 </body>
+
 
 </html>

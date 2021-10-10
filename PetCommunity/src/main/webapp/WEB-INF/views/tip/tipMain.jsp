@@ -10,7 +10,7 @@
 	    <meta name="description" content="">
 	    <meta name="author" content="">
 	
-	    <title>자유 게시판</title>
+	    <title>팁</title>
 	
 	    <!-- Custom fonts for this template -->
 	    <link href="../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@
           <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 	
 	            <!-- Sidebar - Brand (타이틀 로고)-->
-	            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+	            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
 	                <div class="sidebar-brand-icon rotate-n-15">
 	                    <i class="fas fa-laugh-wink"></i>
 	                </div>
@@ -82,9 +82,9 @@
 	                    data-parent="#accordionSidebar">
 	                    <div class="bg-white py-2 collapse-inner rounded">
 	                        <h6 class="collapse-header">정보</h6>
-	                        <a class="collapse-item" href="#">팁</a>
-	                        <a class="collapse-item" href="#">동물백과</a>
-	                        <a class="collapse-item" href="#">우리동네 동물병원</a>
+	                        <a class="collapse-item" href="/tip/tipMain">팁</a>
+	                        <a class="collapse-item" href="/tip/tipAnimal">동물백과</a>
+	                        <a class="collapse-item" href="/tip/tipMap">우리동네 동물병원</a>
 	                    </div>
 	                </div>
 	            </li>
@@ -350,46 +350,81 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">자유 게시판</h1>
+                    <h1 class="h3 mb-2 text-gray-800">팁</h1>
                    
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"></h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                       
-                                    </tbody>
-                                </table>
+                    <!-- 팁 데이터 부분 --> 
+                    	<p><a href="/tip/writeTipMain">글 작성하기</a></p>
+                       <c:forEach items="${tipList }" var="List">
+                       <div class="card shadow mb-4">
+                            <div class="card-body">
+                            	<div class="table-responsive">                            	
+                                	<table class="table table-bordered" id="dataTable">
+                                	  <tr>
+                                	  	<td>                          	  		
+											<div class="container-fluid">
+												<!-- 그룹 태그로 role과 aria-multiselectable를 설정한다. -->
+												<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+												<!-- 하나의 item입니다. data-parent 설청과 href 설정만 제대로 하면 문제없이 작동합니다. -->
+												<div class="panel panel-default">
+												<div class="panel-heading" role="tab">
+												<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse${List.tipNum }" aria-expanded="false">
+													<span style="font-size: 150%">${List.tipTitle }</span>													
+												</a>
+												<form action="/tip/deleteTip" method="get">
+												<input type="hidden" id="tipNum" name="tipNum" value="${List.tipNum }">
+												<button type="submit" class="btn btn-primary btn-sm">삭제</button>
+												
+												<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal${List.tipNum }">수정</button>
+												</form>
+												 <!-- Modal -->
+												 <form action="/tip/updateTip" method ="post">
+												<div class="modal fade" id="myModal${List.tipNum }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+												  <div class="modal-dialog">
+												    <div class="modal-content">
+												      <div class="modal-header">
+												          <div class="form-group">												          
+														    <input type="text" class="form-control" id="tipTitle" name="tipTitle" value="${List.tipTitle }">
+														  </div>			
+												        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												      </div>
+												      <div class="modal-body">
+												        <textarea class="form-control" rows="3" id="tipContent" name="tipContent" >${List.tipContent }</textarea>
+												      </div>
+												      <div class="modal-footer">
+												        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												        <button type="submit" class="btn btn-primary">수정</button>
+												      </div>
+												    </div>
+												  </div>
+												</div>				
+												<input type="hidden" id="tipNum" name="tipNum" value="${List.tipNum }">
+												</form>		
+														
+														
+														
+														
+														
+														
+												</div>
+												<div id="collapse${List.tipNum }" class="panel-collapse collapse" role="tabpanel">
+												<div class="panel-body"><br><br>
+													<div style="white-space: pre;"><c:out value="${List.tipContent }"></c:out></div>													
+												</div>					
+												</div>
+												</div>
+												</div>
+												</div>
+                                	  	</td>
+                                	  </tr>
+                                	</table>        
+                                 </div>
                             </div>
-                        </div>
-                    </div>
+                          </div>
+                         </c:forEach>         
+                    
+                  </div>
 
-                </div>
                 <!-- /.container-fluid -->
 
             </div>

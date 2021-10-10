@@ -10,7 +10,7 @@
 	    <meta name="description" content="">
 	    <meta name="author" content="">
 	
-	    <title>자유 게시판</title>
+	    <title>동물백과</title>
 	
 	    <!-- Custom fonts for this template -->
 	    <link href="../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -24,6 +24,29 @@
 	
 	    <!-- Custom styles for this page -->
 	    <link href="../resources/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+	    <script type="text/javascript">
+			function formCheck(){
+				var uploadFile = document.getElementById("uploadFile").files[0];
+				var fileName = uploadFile.name;
+				var fileSize = uploadFile.size;
+				
+				//console.log(uploadFile);
+				//console.log(fileName);
+				//console.log(fileSize);
+				
+				var ext = fileName.substring(fileName.lastIndexOf("."),fileName.length);
+				
+				//console.log(extension);
+				
+				if(ext == ".jpg" || ext == ".jpeg" || ext == ".png" || ext ==".jfif"){
+					return true;					
+				}else{
+					alert("파일 확장자를 확인해주세요(jpg, jpeg, png, gif,jfif 업로드 가능)");				
+					return false;
+				}				
+			}
+		</script>
+	    
 	</head>
 
 	<body id="page-top">
@@ -35,7 +58,7 @@
           <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 	
 	            <!-- Sidebar - Brand (타이틀 로고)-->
-	            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+	            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
 	                <div class="sidebar-brand-icon rotate-n-15">
 	                    <i class="fas fa-laugh-wink"></i>
 	                </div>
@@ -82,9 +105,9 @@
 	                    data-parent="#accordionSidebar">
 	                    <div class="bg-white py-2 collapse-inner rounded">
 	                        <h6 class="collapse-header">정보</h6>
-	                        <a class="collapse-item" href="#">팁</a>
-	                        <a class="collapse-item" href="#">동물백과</a>
-	                        <a class="collapse-item" href="#">우리동네 동물병원</a>
+	                       <a class="collapse-item" href="/tip/tipMain">팁</a>
+	                        <a class="collapse-item" href="/tip/tipAnimal">동물백과</a>
+	                        <a class="collapse-item" href="/tip/tipMap">우리동네 동물병원</a>
 	                    </div>
 	                </div>
 	            </li>
@@ -350,46 +373,85 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">자유 게시판</h1>
+                    <h1 class="h3 mb-2 text-gray-800">동물백과</h1>
                    
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary"></h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                       
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- 동물백과 작성  부분 --> 
+					<form action="/tip/writeTipAnimal" method ="post" enctype="multipart/form-data"  onsubmit="return formCheck();"> <!-- enctype없으면 파일이 전송이안됨 -->                                                                                                                                                                                                                                                                                                                                                                                            	 
+                   		<div class="form-group">
+						    <label for="exampleInputEmail1">애완동물 종류</label>
+						    <input type="text" class="form-control" id="animalKind" name="animalKind" placeholder="ex)강아지">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">종 이름</label>
+						    <input type="text" class="form-control" id="animalVariety" name="animalVariety" placeholder="ex)치와와">
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputFile">애완동물 썸네일 사진 업로드</label>
+						    <input type="file"  id ="uploadThumbNail" name="uploadThumbNail">						   
+						  </div>
+						  <div class="form-group">
+						    <label for="exampleInputFile">애완동물 사진 업로드</label>
+						    <input type="file"  multiple="multiple" id ="uploadFile" name="uploadFile">						   
+						  </div>							 
+						  <label for="exampleInputEmail1">썸네일설명</label>
+						  <textarea class="form-control" rows="3" id="animalOutline" name="animalOutline"></textarea>
+						  
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">원산지</label>
+						    <input type="text" class="form-control" id="animalOrigin" name="animalOrigin" placeholder="ex)영국">
+						  </div>
+						  
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">크기</label>
+						    <input type="text" class="form-control" id="animalSize" name="animalSize" placeholder="ex)소형견">
+						  </div>
+						  
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">체고</label>
+						    <input type="text" class="form-control" id="animalHeight" name="animalHeight" placeholder="ex)30~45cm">
+						  </div>
+						  
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">체중</label>
+						    <input type="text" class="form-control" id="animalWeight" name="animalWeight" placeholder="ex)3~4kg">
+						  </div>
+						  
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">외모</label>
+						    <input type="text" class="form-control" id="animalAppearance" name="animalAppearance" placeholder="ex)듬직하다">
+						  </div>
+						  
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">색상</label>
+						    <input type="text" class="form-control" id="animalColor" name="animalColor" placeholder="ex)흰색">
+						  </div>
+						  
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">성격</label>
+						    <input type="text" class="form-control" id="animalPersonality" name="animalPersonality" placeholder="ex)활발하다">
+						  </div>
+						  
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">용도</label>
+						    <input type="text" class="form-control" id="animalPurpose" name="animalPurpose" placeholder="ex)애완견">
+						  </div>
+						  
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">유의할 질병</label>
+						    <input type="text" class="form-control" id="animalDisease" name="animalDisease" placeholder="ex)슬개골탈구">
+						  </div>
+						  
+						  <div class="form-group">
+						    <label for="exampleInputPassword1">추천성향</label>
+						    <input type="text" class="form-control" id="animalRecommend" name="animalRecommend" placeholder="ex)아파트, 젊은층">
+						  </div>
+						  
+						  <button type="submit" class="btn btn-primary btn-sm">작성</button>
+                    </form>
+                    
+                  </div>
 
-                </div>
                 <!-- /.container-fluid -->
 
             </div>

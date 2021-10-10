@@ -127,11 +127,21 @@ create sequence tip_seq nocache;
 create table animal_data
 (
     animal_num          number          primary key,
-    animal_kind         varchar2(20)    not null,   
+    animal_kind         varchar2(100)    not null,   
     animal_thumbnail_or varchar2(300)   not null,
     animal_thumbnail_st varchar2(300)   not null,
-    animal_variety      varchar2(50)    not null, -- 품종
-    animal_outline      varchar2(2000)  not null, -- 설명
+    animal_variety      varchar2(100)    not null, -- 품종
+    animal_outline      varchar2(2000)  not null, -- 썸네일설명
+    animal_origin       varchar2(100),     --원산지
+    animal_size          varchar2(100),     --크기
+    animal_height      varchar2(100),     --체고
+    animal_weight      varchar2(100),     --체중
+    animal_appearance varchar2(500),    --외모
+    animal_color          varchar2(500),     --색상
+    animal_personality varchar2(500),    --성격
+    animal_purpose     varchar2(100),     --용도
+    animal_disease     varchar2(500),     --유의할질병
+    animal_recommend varchar2(100),   --추천성향
     member_id           varchar2(30)    
     constraint ad_fk REFERENCES ac_member(member_id)
 );

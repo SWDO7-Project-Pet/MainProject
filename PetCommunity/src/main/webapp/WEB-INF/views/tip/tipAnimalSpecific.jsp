@@ -10,7 +10,7 @@
 	    <meta name="description" content="">
 	    <meta name="author" content="">
 	
-	    <title>자유 게시판</title>
+	    <title>동물백과</title>
 	
 	    <!-- Custom fonts for this template -->
 	    <link href="../resources/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@
           <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 	
 	            <!-- Sidebar - Brand (타이틀 로고)-->
-	            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+	            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
 	                <div class="sidebar-brand-icon rotate-n-15">
 	                    <i class="fas fa-laugh-wink"></i>
 	                </div>
@@ -82,9 +82,9 @@
 	                    data-parent="#accordionSidebar">
 	                    <div class="bg-white py-2 collapse-inner rounded">
 	                        <h6 class="collapse-header">정보</h6>
-	                        <a class="collapse-item" href="#">팁</a>
-	                        <a class="collapse-item" href="#">동물백과</a>
-	                        <a class="collapse-item" href="#">우리동네 동물병원</a>
+	                       <a class="collapse-item" href="/tip/tipMain">팁</a>
+	                        <a class="collapse-item" href="/tip/tipAnimal">동물백과</a>
+	                        <a class="collapse-item" href="/tip/tipMap">우리동네 동물병원</a>
 	                    </div>
 	                </div>
 	            </li>
@@ -350,46 +350,71 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">자유 게시판</h1>
+                    <h1 class="h3 mb-2 text-gray-800">동물백과</h1>
                    
 
-                    <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
+                    <!-- 동물백과 데이터 부분 -->                                                                                                                                                                                                                                                                                                                                                                     	 
+                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary"></h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                       
-                                    </tbody>
+                                    	<tr>                                    		
+                                    		<td colspan="6" style="text-align: center;">
+                                    			<c:forEach items="${photo }" var="pt">
+                                    				<img src="/images/${pt.adBoardPhotoSt }" width="200px" height="200px">
+                                    			</c:forEach>
+                                    		</td>                                    		
+                                    	</tr>
+                                    	<tr>                                    	
+                           					<th> 품종 </th>
+                           					 <td colspan="5">${animal.animalVariety }</td>
+                        				</tr>
+                                    	<tr>                                    	
+                           					<th> 원산지 </th>
+                           					 <td colspan="5">${animal.animalOrigin }</td>
+                        				</tr>
+                                    	<tr>                                    	
+                           					<th> 크기 </th>
+                           					 <td>${animal.animalSize }</td>
+                           					<th> 체고 </th>
+                           					 <td>${animal.animalHeight }</td>
+                           					<th> 체중 </th>
+                           					 <td>${animal.animalWeight }</td>
+                        				</tr>
+                                    	<tr>                                    	
+                           					<th> 외모 </th>
+                           					 <td colspan="5">${animal.animalAppearance }</td>
+                        				</tr>
+                                    	<tr>                                    	
+                           					<th> 색상 </th>
+                           					 <td colspan="5">${animal.animalColor }</td>
+                        				</tr>
+                                    	<tr>                                    	
+                           					<th> 성격 </th>
+                           					 <td colspan="5">${animal.animalPersonality }</td>
+                        				</tr>
+                                    	<tr>                                    	
+                           					<th> 용도 </th>
+                           					 <td colspan="5">${animal.animalPurpose }</td>
+                        				</tr>
+                                    	<tr>                                    	
+                           					<th> 유의할 질병 </th>
+                           					 <td colspan="5">${animal.animalDisease }</td>
+                        				</tr>
+                                    	<tr>                                    	
+                           					<th> 추천성향 </th>
+                           					 <td colspan="5">${animal.animalRecommend }</td>
+                        				</tr>
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div>        
+                    
+                  </div>
 
-                </div>
                 <!-- /.container-fluid -->
 
             </div>
