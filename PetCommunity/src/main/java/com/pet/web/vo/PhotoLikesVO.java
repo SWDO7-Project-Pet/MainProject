@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class PhotoLikesVO {
 	private String memberId;   // 좋아요 누른 ID
-	private int PhotoBoardNum; // 좋아요 눌린 사진게시판
+	private int photoBoardNum; // 좋아요 눌린 사진게시판
 }

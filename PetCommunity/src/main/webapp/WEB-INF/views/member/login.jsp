@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!doctype html>
@@ -42,24 +43,24 @@
 				<input type="text" class="form-control" id="floatingInput" name="memberId" required
 					placeholder="namenamename"> <label for="floatingInput">ID</label>
 				<div class="invalid-feedback">
-					id가 올바르지 않습니다.
+					ID가 올바르지 않습니다.
 				</div>
 			</div>
 			<div class="form-floating">
 				<input type="password" class="form-control" id="floatingPassword" name="memberPw" required
 					placeholder="Password"> <label for="floatingPassword">PASSWORD</label>
 				<div class="invalid-feedback">
-					id가 올바르지 않습니다.
+					PW가 올바르지 않습니다.
 				</div>
 			</div>
-			<div class="checkbox mb-3">
-				<label> <input type="checkbox" value="remember-me">
-					Remember me
-				</label>
-			</div>
+			<c:if test="${msg == false}">
+					<p style="color:#f00;">로그인에 실패했습니다. 아이디 또는 비밀번호를 다시 입력하세요.</p>
+				</c:if>
 			<button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+			
 			<p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
 		</form>
+		
 		<script type="text/javascript">
 		'use strict';
 

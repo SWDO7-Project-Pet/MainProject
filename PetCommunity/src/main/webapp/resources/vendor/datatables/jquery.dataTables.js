@@ -1782,7 +1782,7 @@
 			// Backwards compatibility - if there is no sEmptyTable given, then use the same as
 			// sZeroRecords - assuming that is given.
 			if ( ! lang.sEmptyTable && zeroRecords &&
-				defaults.sEmptyTable === "No data available in table" )
+				defaults.sEmptyTable === "글이 없습니다." )
 			{
 				_fnMap( lang, lang, 'sZeroRecords', 'sEmptyTable' );
 			}
@@ -11416,7 +11416,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sFirst": "First",
+				"sFirst": "처음",
 	
 	
 				/**
@@ -11439,7 +11439,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sLast": "Last",
+				"sLast": "마지막",
 	
 	
 				/**
@@ -11462,7 +11462,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "Next",
+				"sNext": "다음",
 	
 	
 				/**
@@ -11485,7 +11485,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Previous"
+				"sPrevious": "이전"
 			},
 	
 			/**
@@ -11494,7 +11494,7 @@
 			 * parameter - if it is not given, the value of `zeroRecords` will be used
 			 * instead (either the default or given value).
 			 *  @type string
-			 *  @default No data available in table
+			 *  @default 글이 없습니다.
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.emptyTable
@@ -11503,12 +11503,12 @@
 			 *    $(document).ready( function() {
 			 *      $('#example').dataTable( {
 			 *        "language": {
-			 *          "emptyTable": "No data available in table"
+			 *          "emptyTable": "글이 없습니다."
 			 *        }
 			 *      } );
 			 *    } );
 			 */
-			"sEmptyTable": "No data available in table",
+			"sEmptyTable": "글이 없습니다.",
 	
 	
 			/**
@@ -11526,7 +11526,7 @@
 			 * * `\_PAGES\_` - Total number of pages of data in the table
 			 *
 			 *  @type string
-			 *  @default Showing _START_ to _END_ of _TOTAL_ entries
+			 *  @default  _START_ 부터 _END_ 까지 총 _TOTAL_ 개
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.info
@@ -11540,14 +11540,14 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": " _START_ 부터 _END_ 까지 총 _TOTAL_ 개",
 	
 	
 			/**
 			 * Display information string for when the table is empty. Typically the
 			 * format of this string should match `info`.
 			 *  @type string
-			 *  @default Showing 0 to 0 of 0 entries
+			 *  @default  0 부터 0 까지 총 0 개
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.infoEmpty
@@ -11561,7 +11561,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+			"sInfoEmpty": " 0 부터 0 까지 총 0 개",
 	
 	
 			/**
@@ -11669,7 +11669,7 @@
 			 * with a default select list of 10, 25, 50 and 100, and can be replaced
 			 * with a custom select box if required.
 			 *  @type string
-			 *  @default Show _MENU_ entries
+			 *  @default _MENU_ 개씩 보여주기
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.lengthMenu
@@ -11701,7 +11701,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "Show _MENU_ entries",
+			"sLengthMenu": "_MENU_ 개씩 보여주기",
 	
 	
 			/**
@@ -11756,7 +11756,7 @@
 			 * control over where it appears in the string. If "_INPUT_" is not given
 			 * then the input box is appended to the string automatically.
 			 *  @type string
-			 *  @default Search:
+			 *  @default 검색:
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.search
@@ -11781,7 +11781,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sSearch": "Search:",
+			"sSearch": "검색:",
 	
 	
 			/**
@@ -11825,7 +11825,7 @@
 			 * displayed after filtering. `emptyTable` is shown when there is simply no
 			 * information in the table at all (regardless of filtering).
 			 *  @type string
-			 *  @default No matching records found
+			 *  @default 찾는 데이터가 없습니다.
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.zeroRecords
@@ -11839,7 +11839,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sZeroRecords": "No matching records found"
+			"sZeroRecords": "찾는 데이터가 없습니다."
 		},
 	
 	

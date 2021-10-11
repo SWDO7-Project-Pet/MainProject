@@ -12,24 +12,61 @@ public class MemberDAO {
 	@Autowired
 	private SqlSession session;
 
-	public int join(MemberVO member) {
+	public int join(MemberVO joinMember) {
 		int result = 0;
 		MemberMapper mapper = null;
 		try {
 			mapper = session.getMapper(MemberMapper.class);
-			result = mapper.join(member);
+			result = mapper.join(joinMember);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
 
-	public String login(MemberVO loginMember) {
-		String result = null;
+	public MemberVO login(MemberVO loginMember) {
+		MemberVO result = null;
 		MemberMapper mapper = null;
 		try {
 			mapper = session.getMapper(MemberMapper.class);
 			result = mapper.login(loginMember);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public int idCheck(String memberId) {
+		int result = 0;
+		MemberMapper mapper = null;
+		try {
+			mapper = session.getMapper(MemberMapper.class);
+			result = mapper.idCheck(memberId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public MemberVO selectId(String memberId) {
+		MemberVO result = null;
+		MemberMapper mapper = null;
+		try {
+			mapper = session.getMapper(MemberMapper.class);
+			result = mapper.selectId(memberId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	public int updateMember(MemberVO updateMember) {
+		System.out.println(updateMember);
+		int result = 0;
+		MemberMapper mapper = null;
+		try {
+			mapper = session.getMapper(MemberMapper.class);
+			result = mapper.updateMember(updateMember);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

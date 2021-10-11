@@ -16,9 +16,10 @@
 		<typeAlias type="com.pet.web.vo.FreeHashtagVO" alias="FreeHashtag"/>
 		<typeAlias type="com.pet.web.vo.FreeLikesVO" alias="FreeLikes"/>
 		<typeAlias type="com.pet.web.vo.FreeReplyVO" alias="FreeReply"/>
+		<typeAlias type="com.pet.web.vo.FreeBoardSaveVO" alias="FreeBoardSave"/>
 		
 		<!-- 메신저 -->
-		<typeAlias type="com.pet.web.vo.MessengerVO" alias="Messenger"/>
+		<typeAlias type="com.pet.web.vo.ChatVO" alias="Chat"/>
 		
 		<!-- 사진게시판 -->
 		<typeAlias type="com.pet.web.vo.PhotoBoardSaveVO" alias="PhotoBoardSave"/>
@@ -43,7 +44,7 @@
 		<mapper resource="photoBoardMapper.xml"/>
 		<mapper resource="tradeBoardMapper.xml"/>
 		<mapper resource="tipMapper.xml"/>
-		<mapper resource="messengerMapper.xml"/>
+		<mapper resource="chatMapper.xml"/>
 	</mappers>
 	
 </configuration>

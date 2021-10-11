@@ -14,7 +14,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
 
-	//콘트롤러의 메서드 실행 전에 처리
+	// 컨트롤러의 메서드 실행 전에 처리
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -23,7 +23,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		
 		//세션의 로그인 정보 읽기
 		HttpSession session = request.getSession();
-		String loginId = (String) session.getAttribute("loginId");
+		String loginId = (String) session.getAttribute("memberId");
 		
 		//로그인되지 않은 경우 로그인 페이지로 이동
 		if (loginId == null) {

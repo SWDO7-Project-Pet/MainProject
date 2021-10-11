@@ -4,8 +4,14 @@ import com.pet.web.vo.MemberVO;
 
 public interface MemberMapper {
 
-	int join(MemberVO member);
+	int join(MemberVO joinMember);
 
-	String login(MemberVO loginMember);
+	MemberVO login(MemberVO loginMember);
+
+	int idCheck(String memberId);
+
+	MemberVO selectId(String memberId);
+
+	int updateMember(MemberVO updateMember);
 
 }
